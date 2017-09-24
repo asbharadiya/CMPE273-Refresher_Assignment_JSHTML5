@@ -1,0 +1,35 @@
+<html>
+	<body>
+		<p>Enter Information</p>
+		<input type="text" id="fname">
+		<input type="text" id="lname">
+		<input type="text" id="contactnum">
+		<input type="button" onclick="submit()" value="Submit">
+		
+		<p>Review Information</p>
+		<div><span>First Name:</span><span id="fnamev"></span></div>
+		<div><span>Last Name:</span><span id="lnamev"></span></div>
+		<div><span>Contact Number:</span><span id="contactnumv"></span></div>
+		<input type="button" onclick="verifyContact()" value="Verify Contact">
+		<p id="calltext"></p>
+		<script>
+			var user;
+			function submit(){
+				user = {
+					fname: document.getElementById("fname").value,
+					lname: document.getElementById("lname").value,
+					contactnum: document.getElementById("contactnum").value,
+					verifyContact: function(){
+						document.getElementById("calltext").innerHTML = "Calling " + this.contactnum + "...";
+					}
+				}
+				document.getElementById("fnamev").innerHTML = user.fname;
+				document.getElementById("lnamev").innerHTML = user.lname;
+				document.getElementById("contactnumv").innerHTML = user.contactnum;
+			}
+			function verifyContact(){
+				user.verifyContact();
+			}
+		</script>
+	</body>
+</html>

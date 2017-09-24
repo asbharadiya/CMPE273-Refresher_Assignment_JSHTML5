@@ -1,0 +1,45 @@
+<html>
+	<body>
+		<p>Enter your marks</p>
+		<input type="text" id="marks">
+		<input type="button" onclick="submit()" value="Submit">
+		<p id="result"></p>
+		
+		<script>
+			function computeGrades(marks){
+				var gradeText;
+				switch(true) {
+					case marks < 60:
+						gradeText = "Your final grade is F.";
+						break;
+					case marks < 75:
+						gradeText = "Your final grade is B+.";
+						break;
+					case marks < 85:
+						gradeText = "Your final grade is B.";
+						break;
+					case marks < 95:
+						gradeText = "Your final grade is A.";
+						break;
+					case marks <= 100:
+						gradeText = "Your final grade is A+.";
+						break;
+					default:
+						gradeText = "Your marks are not valid.";
+				}
+				document.getElementById("result").innerHTML = gradeText;
+			}
+			
+			function submit(){
+				var marks = document.getElementById("marks").value;
+				if(marks.length <= 0){
+					document.getElementById("result").innerHTML = "Please enter your marks.";
+				} else if(isNaN(marks)){
+					document.getElementById("result").innerHTML = "Please enter valid marks.";
+				} else {
+					computeGrades(Number(marks));
+				}
+			}
+		</script>
+	</body>
+</html>

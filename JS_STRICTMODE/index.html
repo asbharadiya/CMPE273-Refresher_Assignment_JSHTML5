@@ -1,0 +1,22 @@
+<html>
+	<body>
+		<input type="button" onclick="testStrictMode()" value="Strict Mode">
+		<input type="button" onclick="testNotStrictMode()" value="Not Strict Mode">
+		
+		<script>
+			function testStrictMode(){
+				'use strict';
+				try{
+					msg1 = "Welcome to CMPE273 class in strict mode!";
+					alert(msg1);
+				} catch(e){
+					alert(e);
+				}
+			}
+			function testNotStrictMode(){
+				msg2 = "Welcome to CMPE273 class in normal mode!";
+				alert(msg2);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+	<body>
+		<input type="text" id="fname">
+		<input type="text" id="lname">
+		<input type="button" onclick="submit()" value="Submit">
+		
+		<p id="test"></p>
+
+		<script>
+			var fname, lname, fullname;
+			function submit(){
+				fname =  document.getElementById("fname").value;
+				lname =  document.getElementById("lname").value;
+				fullname = fname + " " + lname;
+				document.getElementById("test").innerHTML = "Welcome " + fullname + "!";
+			}
+		</script>
+	</body>
+</html>

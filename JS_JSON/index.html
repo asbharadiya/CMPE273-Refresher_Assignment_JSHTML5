@@ -1,0 +1,30 @@
+<html>
+	<body>
+		<input type="button" onclick="getInfo()" value="Get Company Info!">
+		<div><span>Company Name: </span><span id="name"></span></div>
+		<div><span>Headquartered At: </span><span id="headquarter"></span></div>
+		<div><span>Founded In: </span><span id="foundedIn"></span></div>
+		<div><span>Founder: </span><span id="founder"></span></div>
+		<div><span>Industry: </span><span id="industry"></span></div>
+		<div><span>Number Of Employees: </span><span id="numOfEmp"></span></div>
+		
+		<script>
+			var companyJSON = '{"name":"Google Inc.",'
+				+ '"headquarter":"Mountain View, CA",'
+				+ '"foundedIn":"1998",'
+				+ '"founder":"Larry Page & Sergey Brin",'
+				+ '"industry":"Internet",'
+				+ '"numOfEmp":57100}';
+			
+			function getInfo(){
+				var jsonObj = JSON.parse(companyJSON);
+				document.getElementById("name").innerHTML = jsonObj.name;
+				document.getElementById("headquarter").innerHTML = jsonObj.headquarter;
+				document.getElementById("foundedIn").innerHTML = jsonObj.foundedIn;
+				document.getElementById("founder").innerHTML = jsonObj.founder;
+				document.getElementById("industry").innerHTML = jsonObj.industry;
+				document.getElementById("numOfEmp").innerHTML = jsonObj.numOfEmp;
+			}
+		</script>
+	</body>
+</html>

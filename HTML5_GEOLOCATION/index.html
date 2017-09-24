@@ -1,0 +1,40 @@
+<html>
+	<body>
+		<input type="button" onclick="showLocation()" value="Show My Location">
+		<hr>
+		<p><span>Latitude: </span><span id="lat"></span></p>
+		<p><span>Longitude: </span><span id="lng"></span></p>
+		
+		<script>
+			function showPosition(position){
+				document.getElementById("lat").innerHTML = position.coords.latitude;
+				document.getElementById("lng").innerHTML = position.coords.longitude;
+			}
+			
+			function showError(error){
+				switch(error.code) {
+			        case error.PERMISSION_DENIED:
+			            alert("User denied the request for Geolocation.");
+			            break;
+			        case error.POSITION_UNAVAILABLE:
+			            alert("Location information is unavailable.");
+			            break;
+			        case error.TIMEOUT:
+			        		alert("The request to get user location timed out.");
+			            break;
+			        case error.UNKNOWN_ERROR:
+			            alert("An unknown error occurred.");
+			            break;
+			    }
+			}
+			
+			function showLocation(){
+				if (navigator.geolocation) {
+			        navigator.geolocation.getCurrentPosition(showPosition, showError);
+			    } else {
+			        alert("Geolocation is not supported by this browser.");
+			    }
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<html>
+	<body onload="load()">
+	
+		<h4>Parent</h4>
+		<p>Wealth: <span id="pwealth"></span></p>
+		<h4>Child</h4>
+		<p>Wealth: <span id="cwealth"></span></p>
+		<h4>Grandchild</h4>
+		<p>Wealth: <span id="gwealth"></span></p>
+		<p>Fixed Expenses: <span id="gexpenses"></span></p>
+		
+		<script>
+			function load(){
+				var inheritsFrom = function (child, parent) {
+				    child.prototype = Object.create(parent.prototype);
+				};
+				
+				var Parent = function() {
+				    this.name = "Parent class";
+				    this.wealth = 1000;
+				}
+				Parent.prototype.getWealth = function() {
+				    return this.wealth;
+				}
+				
+				var Child = function() {
+				    this.name = "Child class";
+				    this.wealth = 1500;
+				}
+				inheritsFrom(Child, Parent);
+				Child.prototype.getWealth = function() {
+				    return this.wealth + Parent.prototype.getWealth.call(this);
+				}
+				
+				var Grandchild = function () {
+				    this.name = "Grandchild class";
+				    this.wealth = 2000;
+				    this.fixedExpenses = 1000;
+				}
+				inheritsFrom(Grandchild, Child);
+				Grandchild.prototype.getFixedExpenses = function() {
+				    return this.fixedExpenses;
+				}
+				Grandchild.prototype.getWealth = function () {
+				    return this.wealth + Child.prototype.getWealth.call(this);
+				}
+
+				var a = new Parent();
+				document.getElementById("pwealth").innerHTML = a.getWealth();
+				var b = new Child();
+				document.getElementById("cwealth").innerHTML = b.getWealth();
+				var c = new Grandchild();
+				document.getElementById("gwealth").innerHTML = c.getWealth();
+				document.getElementById("gexpenses").innerHTML = c.getFixedExpenses();
+			}
+		</script>
+	</body>
+</html>

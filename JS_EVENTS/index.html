@@ -1,0 +1,19 @@
+<html>
+	<body onload="counterReset()">
+		<input type="button" onclick="increaseCount()" value="Click me to increase count!">
+		<p id="count"></p>
+		
+		<script>
+			var count = 0;
+			
+			function counterReset(degrees){
+				document.getElementById("count").innerHTML = "Current count is " + count;
+			}
+		
+			function increaseCount(){
+				count++;
+				document.getElementById("count").innerHTML = "Current count is " + count;
+			}
+		</script>
+	</body>
+</html>

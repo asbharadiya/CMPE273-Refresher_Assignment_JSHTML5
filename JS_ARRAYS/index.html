@@ -1,0 +1,23 @@
+<html>
+	<body onload="showItems()">
+		<input type="text" id="item">
+		<input type="button" onclick="add()" value="Add">
+		<p>Shopping List:</p>
+		<p id="list"></p>
+		
+		<script>
+			var items = [];
+			
+			function showItems(){
+				document.getElementById("list").innerHTML = items.join("</p><p>");
+			}
+			
+			function add(){
+				var item = document.getElementById("item").value;
+				items.push(item);
+				document.getElementById("item").value = "";
+				showItems();
+			}
+		</script>
+	</body>
+</html>

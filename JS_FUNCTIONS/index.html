@@ -1,0 +1,22 @@
+<html>
+	<body>
+		<p>Enter plane angle value in degrees</p>
+		<input type="text" id="degree">
+		<input type="button" onclick="submit()" value="Submit">
+		
+		<p id="radians"></p>
+		
+		<script>
+			function degreeToRadians(degrees){
+				return (degrees*3.14)/180;
+			}
+		
+			var degrees, radians;
+			function submit(){
+				degrees = document.getElementById("degree").value;
+				radians = degreeToRadians(Number(degrees));
+				document.getElementById("radians").innerHTML = "Plane angle value in radians is " + radians;
+			}
+		</script>
+	</body>
+</html>

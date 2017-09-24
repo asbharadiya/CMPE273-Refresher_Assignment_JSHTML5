@@ -1,0 +1,48 @@
+<html>
+	<body>
+		<div><span>First Name: </span><input type="text" id="fname"></div>
+		<div><span>Last Name: </span><input type="text" id="lname"></div>
+		<div><span>Email: </span><input type="text" id="email"></div>
+		<input type="button" value="Save" onclick="save()">
+		<hr>
+		<input type="button" value="Get User Data" onclick="get()">
+		<p id="fnamev"></p>
+		<p id="lnamev"></p>
+		<p id="emailv"></p>
+		
+		<script>
+			function save(){
+				var fname = document.getElementById("fname").value;
+				var lname = document.getElementById("lname").value;
+				var email = document.getElementById("email").value;
+				try {
+					if(fname.length <= 0){
+						throw "Please enter first name.";
+					}
+					if(lname.length <= 0){
+						throw "Please enter last name.";
+					}
+					if(email.length <= 0){
+						throw "Please enter email.";
+					}
+					localStorage.setItem("fname",fname);
+					localStorage.setItem("lname",lname);
+					localStorage.setItem("email",email);
+				} catch(e){
+					alert(e);
+				}
+				finally {
+					document.getElementById("fname").value = "";
+					document.getElementById("lname").value = "";
+					document.getElementById("email").value = "";
+				}
+			}
+			
+			function get(){
+				document.getElementById("fnamev").innerHTML = "First Name: " + localStorage.getItem("fname");
+				document.getElementById("lnamev").innerHTML = "Last Name: " + localStorage.getItem("lname");
+				document.getElementById("emailv").innerHTML = "Email: " + localStorage.getItem("email");
+			}
+		</script>
+	</body>
+</html>

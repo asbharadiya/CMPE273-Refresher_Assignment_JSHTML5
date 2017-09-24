@@ -1,0 +1,38 @@
+<html>
+	<body>
+		<div><span>First Number: </span><input type="text" id="fnum"></div>
+		<div><span>Second Number: </span><input type="text" id="snum"></div>
+		<div><span>Arithmetic Operator: </span><input type="text" id="operator"></div>
+		<input type="button" value="Submit" onclick="submit()">
+		
+		<script>
+			function computeResult(num1, num2, operator){
+				switch(operator) {
+					case "+": return num1 + num2;
+					case "-": return num1 - num2;
+					case "*": return num1 * num2;
+					case "/": return num1 / num2;
+				}
+			}
+			function submit(){
+				var fnum = document.getElementById("fnum").value;
+				var snum = document.getElementById("snum").value;
+				var operator = document.getElementById("operator").value;
+				try {
+					if(fnum.length <= 0){
+						throw "Please enter first number.";
+					}
+					if(snum.length <= 0){
+						throw "Please enter second number.";
+					}
+					if(operator.length <= 0){
+						throw "Please enter arithmetic operator.";
+					}
+					alert("Result = " + computeResult(parseFloat(fnum),parseFloat(snum),operator));
+				} catch(e){
+					alert(e);
+				}
+			}
+		</script>
+	</body>
+</html>
